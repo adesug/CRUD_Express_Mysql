@@ -1,12 +1,19 @@
 <html>
     <title> CRUD EXPRESS MYSQL</title>
     <head>
-        <h1 style="text-align: center  ;">tegal express</h1>
+        <h1 style="text-align: center  ;">CRUD OPERATION USING ExpressJS | My sql</h1>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
     </head>
     <body>
+        
         <div class="container">
             <h2><% title %></h2>
+            <a href="/add " class="btn btn-sm btn-primary mb-2">Add Users</a>
+            
             <table class="table table-dark table-striped">
                 <thead>
                     <tr>
@@ -23,8 +30,8 @@
                         <td><%= user.email %></td>
                         <td><%= user.phone_no%></td>
                         <td>
-                            <button class="btn btn-sm btn-promary">Edit</button>
-                            <button class="btn btn-sm btn-primary">Delete</button>
+                            <a href="edit/<%= user.id %>" class="btn btn-sm btn-warning">Edit</a>
+                            <a href= "delete/<%= user.id %>" class="btn btn-sm btn-danger">Delete</a>
                         </td>
                     </tr>
                     <% }); %>

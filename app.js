@@ -43,6 +43,56 @@ app.get('/',(req, res) => {
     });
 });
 
+app.get('/add',(req, res) => {
+    res.render('user_add', {
+        title : 'CRUD XPRESSJS'
+        
+    });
+
+});
+
+
+
+app.post('/save',(req, res ) => {
+    let data = {name: req.body.name, email: req.body.email, phone_no : req.body.phone_no};
+    let sql = "INSERT INTO users SET ?";
+    let query = connection.query(sql, data,(err, results) => {
+        if(err) throw err;
+        res.redirect('/');
+    });
+});
+app.get('/edit/:userId',(req, res) => {
+    const userId =req.params.userId;
+    let sql = `Select * from users where id = ${userId}`;
+    let query = connection.query(sql,(err, result) => {
+        if(err) throw err;
+        res.render('user_edit', {
+            title : 'CRUD XPRESSJS',
+            user : result[0]
+        });
+    });
+});
+
+app.post('/update',(req, res ) => {
+    const userId =req.body.id;
+    let sql = "update users SET name= '"+req.body.name+"', email'"+req.body.email+"', phone_no'"+req.body.phone_no+"' where id ="+userId ;
+    let query = connection.query(sql,(err, results) => {
+        if(err) throw err;
+        res.redirect('/');
+    });
+});
+
+app.get('/delete/:userId',(req, res) => {
+    const userId =req.params.userId;
+    let sql = `DELETE from users where id = ${userId}`;
+    let query = connection.query(sql,(err, result) => {
+        if(err) throw err;
+        res.redirect('/') ;
+            
+        
+    });
+});
+
 //server pertama
 app.listen(3000, () => {
     console.log('Hallo');
