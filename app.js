@@ -74,11 +74,17 @@ app.get('/edit/:userId',(req, res) => {
 });
 
 app.post('/update',(req, res ) => {
-    const userId =req.body.id;
-    let sql = "update users SET name= '"+req.body.name+"', email'"+req.body.email+"', phone_no'"+req.body.phone_no+"' where id ="+userId ;
+    // const userId =req.body.id;
+    // let sql = "update users SET name= '"+req.body.name+"', email'"+req.body.email+"', phone_no'"+req.body.phone_no+"' where id ="+userId ;
+    // let query = connection.query(sql,(err, results) => {
+    //     if(err) throw err;
+    //     res.redirect('/');
+    // });
+    const userId = req.body.id;
+    let sql = "update users SET name='"+req.body.name+"',  email='"+req.body.email+"',  phone_no='"+req.body.phone_no+"' where id ="+userId;
     let query = connection.query(sql,(err, results) => {
-        if(err) throw err;
-        res.redirect('/');
+      if(err) throw err;
+      res.redirect('/');
     });
 });
 
